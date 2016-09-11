@@ -65,9 +65,9 @@ Draw instance of _image_ into a clip
 * _height_: the height of the clip
 * _metrics_: optional object to control the image behaviour into the clip (see below)
 
-### the metrics object
+### The metrics object
 
-#### default composition
+#### Default composition
 ```javascript
 var metrics = {
   bleed: 0,
@@ -77,24 +77,24 @@ var metrics = {
   offsetY: 0
 }
 ```
-#### attributes
-#### bleed
+#### Attributes
+##### bleed
 Add a minimum margin of _bleed_ pixels to each side of the image. <br>
 This is useful is you need to translate/dezoom the image into its container.
 
-#### alignH
+##### alignH
 Set horizontal alignment of the image. (default to 0.5)<br>
 0 is the left corner / 0.5 the middle / 1 the right corner.
 
-#### alignV
+##### alignV
 Set vertical alignment of the image. (default to 0.5)<br>
 0 is the top corner / 0.5 the middle / 1 the bottom corner.
 
-#### offsetX
+##### offsetX
 Add a horizontal offset of _offsetX_ pixels.<br>
 Use it to compose animations like parallax
 
-#### offsetY
+##### offsetY
 Add a vertical offset of _offsetY_ pixels
 
 ## Credits
