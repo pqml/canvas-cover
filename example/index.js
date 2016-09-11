@@ -7,13 +7,16 @@ var coverImage = require('../index.js')
 
 var size = require('size')
 var Canvas = require('canvas')
-var canvas = new Canvas({ parent: document.body })
+var canvas = new Canvas({
+  ratio: 1,
+  parent: document.body
+})
 
 function resize (w, h) { canvas.resize(w, h) }
 size.addListener(resize)
 resize(window.innerWidth, window.innerHeight)
 
-var estiennePhoto = coverImage('estienne.jpg')
+var estiennePhoto = coverImage('https://hd.unsplash.com/photo-1451481454041-104482d8e284')
 var t = 0
 
 function run () {
