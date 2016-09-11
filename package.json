@@ -1,0 +1,32 @@
+{
+  "name": "canvas-cover",
+  "version": "0.0.2",
+  "scripts": {
+    "build-module": "browserify index.js | uglifyjs -c -m > index.min.js",
+    "build-example": "browserify example/index.js > example/bundle.js",
+    "build": "npm run build-module && npm run build-example",
+    "start": "budo example/index.js:bundle.js -P -l -d example"
+  },
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "budo": "^9.1.0",
+    "canvas": "github:watsondg/canvas",
+    "raf": "github:pqml/raf",
+    "size": "github:watsondg/size",
+    "stats.js": "^0.16.0",
+    "uglify-js": "^2.7.3"
+  },
+  "browserify": {
+    "transform": []
+  },
+  "description": ":city_sunrise::art: canvas version of background-size: cover;"
+}
