@@ -77,7 +77,6 @@ var metrics = {
   offsetY: 0
 }
 ```
-
 #### Attributes
 ##### bleed
 Add a minimum margin of _bleed_ pixels to each side of the image. <br>
