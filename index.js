@@ -1,25 +1,24 @@
-var xtend = require('xtend')
-
-function coverImage (url) {
-  var image = document.createElement('img')
-  image.src = url
-
-  function onload (cb) {
-    image.onload = cb
+function coverImage (source) {
+  var api = {
+    source: source || null,
+    draw: draw
   }
 
-  function draw (context, x, y, w, h, metrics) {
-    metrics = xtend({
-      bleed: 0,
-      offsetX: 0,
-      offsetY: 0,
-      alignH: 0.5,
-      alignV: 0.5
-    }, metrics)
+  function draw (context, x, y, w, h, opts) {
+    if (!api.source || !api.source.width || !api.source.height) return
+
+    opts = opts || {}
+    var metrics = {
+      bleed: opts.bleed || 0,
+      offsetX: opts.offsetX || 0,
+      offsetY: opts.offsetY || 0,
+      alignH: opts.alignH || 0.5,
+      alignV: opts.alignV || 0.5
+    }
 
     // calc first ratio to fit one side of the clip (from Ken Fyrstenberg Nilsen)
-    var iw = image.width
-    var ih = image.height
+    var iw = api.source.width
+    var ih = api.source.height
     var ratio = Math.min(w / iw, h / ih)
     var nw = iw * ratio
     var nh = ih * ratio
@@ -53,14 +52,11 @@ function coverImage (url) {
     context.beginPath()
     context.rect(x, y, w, h)
     context.clip()
-    context.drawImage(image, nx, ny, nw, nh)
+    context.drawImage(api.source, nx, ny, nw, nh)
     context.restore()
   }
 
-  return {
-    onload: onload,
-    draw: draw
-  }
+  return api
 }
 
 module.exports = coverImage

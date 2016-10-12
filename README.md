@@ -16,7 +16,7 @@
 
 ## Features
 
-- Only one dependency ([xtend](https://github.com/Raynos/xtend))
+- No dependencies
 - Draw multiple image from the same DOM element
 - Cool metrics features to animate easily (bleed, translation, alignement)
 
@@ -33,8 +33,8 @@ var coverImage = require('canvas-cover')
 var canvas = document.getElementById('myCanvas')
 var context = canvas.getContext('2d')
 
-// load crazyCoolBackground.jpg as a cover image
-var background = coverImage('crazyCoolBackground.jpg')
+// load the image #my-img as a cover image
+var background = coverImage(document.getElementById('my-img'))
 
 // once the image is loaded, draw it to the canvas
 background.onload = draw
@@ -50,11 +50,12 @@ function draw () {
 
 ## Methods
 
-### image = coverImage(_url_)
-Load a new cover image from _url_
+### image = coverImage(_source_)
+Instanciate a new cover image from _source_.<br>
+_source_ can be `<video>`, `<img>`, `<canvas>`.
 
-### image.onload(_callback_)
-Execute _callback_ after the image has been loaded
+### image.source(_source_)
+Change the source of the canvas-cover instance.
 
 ### image.draw(_context_, _x_, _y_, _width_, _height_ [, _metrics_] )
 Draw instance of _image_ into a clip
@@ -64,6 +65,8 @@ Draw instance of _image_ into a clip
 * _width_: the width of the clip
 * _height_: the height of the clip
 * _metrics_: optional object to control the image behaviour into the clip (see below)
+
+> There is no loading method in canvas-cover. `coverImage(_source_)` and `image.source(_source_)` assumes that the domElement is loaded. If the element is not loaded, `image.draw()` will return immediately and nothing will be drawn.
 
 ### The metrics object
 
