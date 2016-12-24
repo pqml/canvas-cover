@@ -12,7 +12,7 @@
   </a>
 </div>
 
-===
+- - -
 
 ## Features
 
@@ -53,7 +53,7 @@ function draw () {
 ### image = coverImage(_url_)
 Load a new cover image from _url_
 
-### image.onload = _callback_
+### image.onload(_callback_)
 Execute _callback_ after the image has been loaded
 
 ### image.draw(_context_, _x_, _y_, _width_, _height_ [, _metrics_] )
